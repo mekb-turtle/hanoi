@@ -1,6 +1,9 @@
+const length = 5; // how many discs to start with
+const delay = 100; // delay between each move
+const delayStart = 1000; // delay before starting moving
 (async()=>{
 let tower = [
-	[ 5, 4, 3, 2, 1 ],
+	new Array(length).fill(0).map((_, i) => length - i),
 	[ ],
 	[ ],
 ];
@@ -35,7 +38,7 @@ const move = async (i, j) => {
 	tower[j].push(tower[i].pop());
 	console.log(`move from ${i+1} to ${j+1}`);
 	await printTower();
-	await wait(50);
+	await wait(delay);
 };
 const solveHanoi = async (disk, from, to, aux) => {
 	if (disk > 0) {
@@ -45,6 +48,6 @@ const solveHanoi = async (disk, from, to, aux) => {
 	}
 }
 await printTower();
-await wait(1000);
+await wait(delayStart);
 await solveHanoi(len, 0, 2, 1);
 })();
