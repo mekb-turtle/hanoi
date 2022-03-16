@@ -1,8 +1,8 @@
 (async()=>{
 let tower = [
 	[ 5, 4, 3, 2, 1 ],
-	[ 5, 3, 1 ],
-	[ 5, 1],
+	[ ],
+	[ ],
 ];
 const move = (i, j) => {
 	if (!tower[i]) throw `invalid tower ${i}`;
@@ -20,11 +20,11 @@ const printTower = () => {
 	for (let j = 0; j < s.length; ++j) {
 		let ring = s.length-1-j;
 		for (let i = 0; i < tower.length; ++i) {
-			let val = tower[i][ring]*2||0;
+			let val = tower[i][ring] * 2 || 0;
 			let str =
-				" ".repeat(len-val/2+2-(val?0:1)) +
-				"─".repeat(val&&Math.floor(val/2-1)) +
-				["┼┴"[+!ring],"│"][+!val];
+				" ".repeat(len - val/2 + 2 - (val?0:1)) +
+				"─".repeat(val && Math.floor(val/2 - 1)) +
+				["┼┴"[+!ring], "│╵╷"[+!ring + (j==0 && 2)]][+!val];
 			s[j] += str + str.split("").reverse().splice(1).join("");
 		}
 	}
